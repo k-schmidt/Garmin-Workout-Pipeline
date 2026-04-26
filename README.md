@@ -7,8 +7,8 @@ YAML-defined workouts compiled and pushed to Garmin Connect. Supports running, c
 Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone https://github.com/yourusername/garmin-workout-pipeline.git
-cd garmin-workout-pipeline
+git clone https://github.com/k-schmidt/Garmin-Workout-Pipeline.git
+cd Garmin-Workout-Pipeline
 uv sync
 cp .env.example .env
 ```
