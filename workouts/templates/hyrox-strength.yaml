@@ -1,0 +1,31 @@
+name: "Hyrox Strength Endurance + Grip"
+type: strength
+
+steps:
+  - warmup:
+      exercise: rowing_machine
+      duration: lap
+      notes: "5 min easy rowing then add dynamic mobility:\n10 x walking lunges\n10 x air squats\n10 x scap pushups\n20m light farmer carry"
+
+  - exercise:
+      exercise: cardio
+      duration: lap
+      notes: "2-3 rounds of:\n250m easy row\n10 wall balls (light)\n20m lunges\n20m farmer carry (light)"
+
+  - circuit: 4
+    skip_last_rest: false
+    steps:
+      - { exercise: rowing_machine, duration: "2:00" }
+      - { exercise: wall_ball, reps: 20, weight: 13 }
+      - { exercise: weighted_lunge, reps: 20, weight: 45 }
+      - { exercise: farmers_carry, duration: lap, weight: 53, notes: "40m" }
+      - { rest: "2:00" }
+
+  - circuit: 3
+    steps:
+      - { exercise: hanging_knee_raise, duration: "0:45" }
+      - { exercise: kettlebell_swing, reps: 20, weight: 20 }
+
+  - cooldown:
+      exercise: rowing_machine
+      duration: lap

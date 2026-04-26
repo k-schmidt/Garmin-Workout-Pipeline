@@ -1,0 +1,41 @@
+updated: "2026-04-26"
+
+running:
+  hr_zones:
+    z1: { min: 130, max: 145 }
+    z2: { min: 146, max: 151 }
+    z3: { min: 152, max: 158 }
+    z4: { min: 161, max: 165 }
+    z4a: { min: 166, max: 170 }
+    z5: { min: 171, max: 200 }
+    recovery: { min: 130, max: 145 }
+    aerobic: { min: 146, max: 151 }
+    tempo: { min: 152, max: 158 }
+    sub_threshold: { min: 161, max: 165 }
+    threshold: { min: 166, max: 170 }
+    vo2max: { min: 171, max: 200 }
+  pace_zones:
+    z1: { min: "8:00/mi", max: "8:30/mi" }
+    z2: { min: "7:05/mi", max: "7:50/mi" }
+    z3: { min: "6:40/mi", max: "7:00/mi" }
+    z4: { min: "6:24/mi", max: "6:40/mi" }
+    z4a: { min: "6:10/mi", max: "6:24/mi" }
+    z5: { min: "5:55/mi", max: "6:10/mi" }
+    z6: { min: "4:40/mi", max: "5:45/mi" }
+    easy: { min: "8:00/mi", max: "8:30/mi" }
+    recovery: { min: "8:00/mi", max: "8:30/mi" }
+    aerobic: { min: "7:05/mi", max: "7:50/mi" }
+    tempo: { min: "6:40/mi", max: "7:00/mi" }
+    sub_threshold: { min: "6:24/mi", max: "6:40/mi" }
+    threshold: { min: "6:10/mi", max: "6:24/mi" }
+    vo2max: { min: "5:55/mi", max: "6:10/mi" }
+    sprint: { min: "4:40/mi", max: "5:45/mi" }
+
+cycling:
+  ftp: 220
+  power_zones:
+    z1: { min_pct: 0, max_pct: 55 }
+    z2: { min_pct: 56, max_pct: 75 }
+    z3: { min_pct: 76, max_pct: 90 }
+    threshold: { min_pct: 91, max_pct: 105 }
+    vo2max: { min_pct: 106, max_pct: 120 }

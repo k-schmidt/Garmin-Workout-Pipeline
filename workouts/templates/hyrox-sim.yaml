@@ -1,0 +1,32 @@
+name: "Hyrox Race Sim"
+type: running
+
+steps:
+  - warmup: { duration: "10:00", zone: easy }
+
+  # --- Station 1: SkiErg ---
+  - run: { distance: "1km", pace: { min: "6:25/mi", max: "6:40/mi" } }
+  - run: { duration: lap, notes: "SkiErg - 1000m" }
+  - recovery: { duration: "2:30" }
+
+  # --- Station 2: Sled Push ---
+  - run: { distance: "1km", pace: { min: "6:25/mi", max: "6:40/mi" } }
+  - run: { duration: lap, notes: "Sled Push - 2x12.5m" }
+  - recovery: { duration: "2:30" }
+
+  # --- Station 3: Sled Pull ---
+  - run: { distance: "1km", pace: { min: "6:25/mi", max: "6:40/mi" } }
+  - run: { duration: lap, notes: "Sled Pull - 2x12.5m" }
+  - recovery: { duration: "2:30" }
+
+  # --- Station 4: Sandbag Lunges ---
+  - run: { distance: "1km", pace: { min: "6:25/mi", max: "6:40/mi" } }
+  - run: { duration: lap, notes: "20 Sandbag Lunges (20kg)" }
+  - recovery: { duration: "2:30" }
+
+  # --- Station 5: Wall Balls ---
+  - run: { distance: "1km", pace: { min: "6:25/mi", max: "6:40/mi" } }
+  - run: { duration: lap, notes: "50 Wall Balls (6kg)" }
+  - recovery: { duration: "2:30" }
+
+  - cooldown: { duration: lap, zone: easy }

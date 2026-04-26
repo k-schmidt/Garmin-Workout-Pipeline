@@ -1,0 +1,28 @@
+name: "Speed Session - 400s & 300s"
+type: running
+
+steps:
+  - warmup: { duration: "15:00", zone: easy }
+
+  # 3 strides
+  - repeat: 3
+    steps:
+      - run: { distance: "100m", zone: sprint }
+      - recovery: { duration: "0:45" }
+
+  # 6 x 400m @ 6:00/mi
+  - repeat: 6
+    steps:
+      - run: { distance: "400m", pace: { min: "5:50/mi", max: "6:10/mi" } }
+      - recovery: { distance: "200m", zone: easy }
+
+  # 5min easy jog between sets
+  - run: { duration: "5:00", zone: easy }
+
+  # 8 x 300m @ 5:45/mi
+  - repeat: 8
+    steps:
+      - run: { distance: "300m", pace: { min: "5:35/mi", max: "5:55/mi" } }
+      - recovery: { distance: "200m", zone: easy }
+
+  - cooldown: { duration: "12:00", zone: easy }
