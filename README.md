@@ -2,9 +2,23 @@
 
 YAML-defined workouts compiled and pushed to Garmin Connect. Supports running, cycling, and strength/cardio workouts with zone-based targets, exercise definitions, and weekly scheduling.
 
-## Setup
+Available as a **CLI** (`gwp`) and as an **MCP server** for conversational workout building with Claude Desktop, Claude Code, or any MCP-compatible client.
 
-Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
+## Install
+
+### From PyPI
+
+```bash
+pip install garmin-workout-pipeline
+```
+
+### From GitHub (no PyPI account needed)
+
+```bash
+uv tool install git+https://github.com/k-schmidt/Garmin-Workout-Pipeline.git
+```
+
+### From source
 
 ```bash
 # Install uv if you don't have it
@@ -13,19 +27,79 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 git clone https://github.com/k-schmidt/Garmin-Workout-Pipeline.git
 cd Garmin-Workout-Pipeline
 uv sync
-cp .env.example .env
 ```
 
-Add your Garmin Connect credentials to `.env`:
+## Configuration
+
+Set your Garmin Connect credentials as environment variables or in a `.env` file:
 
 ```
 GARMIN_EMAIL=your-email@example.com
 GARMIN_PASSWORD=your-password
 ```
 
-Then configure your training zones in `workouts/zones.yaml` — the included file has example values you should replace with your own.
+Configure your training zones in `workouts/zones.yaml` — the included file has example values you should replace with your own.
 
-## Usage
+## MCP Server (Claude Desktop / Claude Code)
+
+Use the MCP server to build workouts conversationally through Claude. 24 tools available: create workouts, add steps, manage circuits, upload to Garmin Connect, browse exercises and zones.
+
+### Claude Code
+
+If installed via pip or uv:
+
+```bash
+claude mcp add garmin-workouts \
+  -e GARMIN_EMAIL=your-email@example.com \
+  -e GARMIN_PASSWORD=your-password \
+  -- garmin-mcp
+```
+
+Without installing (runs directly from GitHub):
+
+```bash
+claude mcp add garmin-workouts \
+  -e GARMIN_EMAIL=your-email@example.com \
+  -e GARMIN_PASSWORD=your-password \
+  -- uvx --from git+https://github.com/k-schmidt/Garmin-Workout-Pipeline.git garmin-mcp
+```
+
+From a local clone:
+
+```bash
+claude mcp add garmin-workouts -- uv --directory /path/to/Garmin-Workout-Pipeline run garmin_pipeline/mcp_server.py
+```
+
+### Claude Desktop
+
+Edit `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "garmin-workouts": {
+      "command": "garmin-mcp",
+      "env": {
+        "GARMIN_EMAIL": "your-email@example.com",
+        "GARMIN_PASSWORD": "your-password"
+      }
+    }
+  }
+}
+```
+
+### Available MCP Tools
+
+| Category | Tools |
+|---|---|
+| Workout | `create_workout`, `get_workout`, `set_workout_name`, `clear_workout` |
+| Steps | `add_warmup`, `add_cooldown`, `add_run`, `add_bike`, `add_exercise`, `add_rest`, `add_recovery`, `remove_step` |
+| Circuits | `add_circuit`, `end_circuit` |
+| Garmin Connect | `preview_upload`, `upload_workout`, `list_workouts`, `delete_workout` |
+| Reference | `list_exercises`, `get_zones`, `validate_workout` |
+| Templates | `save_yaml`, `load_template`, `list_templates` |
+
+## CLI Usage
 
 ```bash
 # Validate a workout (compile to JSON, don't upload)
@@ -115,8 +189,9 @@ Training zones are defined in `workouts/zones.yaml` with HR, pace, and power tar
 ## Project Structure
 
 ```
-cli.py                          # Click CLI (gwp command)
 garmin_pipeline/
+  mcp_server.py                 # MCP server for Claude Desktop/Code
+  cli.py                        # Click CLI (gwp command)
   compiler.py                   # Workout model -> Garmin API JSON
   exercises.py                  # Exercise name -> Garmin category/name registry
   loader.py                     # YAML parser with !include support

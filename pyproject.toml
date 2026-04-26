@@ -1,19 +1,41 @@
 [project]
 name = "garmin-workout-pipeline"
 version = "0.1.0"
-description = "YAML to Garmin Connect workout pipeline"
+description = "YAML to Garmin Connect workout pipeline with MCP server for conversational workout building"
 license = "MIT"
 requires-python = ">=3.11"
+readme = "README.md"
+authors = [
+    { name = "Kyle Schmidt" },
+]
+keywords = ["garmin", "workout", "mcp", "fitness", "training"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
 dependencies = [
     "garminconnect>=0.3",
     "pydantic>=2.0",
     "click>=8.0",
     "pyyaml>=6.0",
     "python-dotenv>=1.2.2",
+    "mcp[cli]>=1.2.0",
 ]
 
+[project.urls]
+Homepage = "https://github.com/k-schmidt/Garmin-Workout-Pipeline"
+Repository = "https://github.com/k-schmidt/Garmin-Workout-Pipeline"
+Issues = "https://github.com/k-schmidt/Garmin-Workout-Pipeline/issues"
+
 [project.scripts]
-gwp = "cli:cli"
+gwp = "garmin_pipeline.cli:cli"
+garmin-mcp = "garmin_pipeline.mcp_server:main"
 
 [dependency-groups]
 dev = [
