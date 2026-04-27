@@ -81,6 +81,9 @@ EXERCISE_REGISTRY: dict[str, ExerciseDefinition] = {
     # Sled
     "sled_push": ExerciseDefinition("CARRY", "SLED_PUSH"),
     "sled_pull": ExerciseDefinition("CARRY", "SLED_PULL"),
+    # Hyrox aliases
+    "burpee_broad_jump": ExerciseDefinition("CARDIO", "BURPEE"),
+    "ski_erg": ExerciseDefinition("ROW", "INDOOR_ROW"),
 }
 
 
