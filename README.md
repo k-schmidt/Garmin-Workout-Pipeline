@@ -13,6 +13,10 @@ Garmin Workout Pipeline is an open-source CLI and MCP server that compiles struc
 >
 > That's a real prompt. The MCP server turns it into a fully structured Garmin workout and uploads it to your watch.
 
+<p align="center">
+  <img src="assets/demo.gif" alt="MCP server demo — building a workout conversationally" width="800">
+</p>
+
 ---
 
 ## Why This Exists
